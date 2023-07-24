@@ -40,9 +40,9 @@ jobs:
           cat android/app/google-services.json
           echo "File created with secret value."
           
-      - name: Install node_modules
-        run: |
-          yarn install
+#       - name: Install node_modules
+#         run: |
+#           yarn install
 
       # - name: Download Android Emulator Image
       #   run: |
@@ -79,9 +79,9 @@ jobs:
      
 
 
-      - name: Build for detox
-        run: |
-          yarn detox_build_release
+#       - name: Build for detox
+#         run: |
+#           yarn detox_build_release
 
       # - name: Android Detox
       #   run: yarn run start && yarn run cucumber_release
