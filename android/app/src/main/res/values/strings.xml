@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Credzy</string>
+    <!-- eDFygLWA3_xFw4uodRGwnn5toNc1koPi5N1Gl -->
+    <string moduleConfig="true" name="CodePushDeploymentKey"></string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+</resources>

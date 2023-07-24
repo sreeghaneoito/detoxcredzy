@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "flexDirection": "row",
+        "height": 84,
+        "justifyContent": "space-around",
+        "paddingHorizontal": 24,
+        "position": "absolute",
+        "width": 750,
+      },
+      Object {
+        "backgroundColor": "#FFFFFF",
+      },
+      Array [
+        Object {
+          "shadowColor": "#00000014",
+          "shadowOffset": Object {
+            "height": 4,
+            "width": -4,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 24,
+        },
+      ],
+    ]
+  }
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F8F8FA",
+        "borderRadius": 4,
+        "height": 48,
+        "marginVertical": 10,
+        "opacity": 1,
+        "padding": 16,
+        "width": "45%",
+      }
+    }
+    testID="backbutton"
+  >
+    <Text
+      collapsable={false}
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 13,
+          "fontWeight": "500",
+          "textAlign": "center",
+          "textTransform": "uppercase",
+        }
+      }
+    />
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#28AF51",
+        "borderRadius": 4,
+        "height": 48,
+        "marginVertical": 10,
+        "opacity": 1,
+        "padding": 16,
+        "width": "45%",
+      }
+    }
+    testID="continuebutton"
+  >
+    <Text
+      collapsable={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 13,
+          "fontWeight": "500",
+          "textAlign": "center",
+          "textTransform": "uppercase",
+        }
+      }
+    />
+  </View>
+</View>
+`;

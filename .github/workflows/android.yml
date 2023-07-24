@@ -1,0 +1,94 @@
+name: Android
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-12
+    timeout-minutes: 50
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.20"
+
+      - name: Use specific Java version for sdkmanager to work
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "11"
+          architecture: "x64"
+      - name: Set Secret Properties
+        run: | 
+          echo "${{ secrets.LOCAL_PROPERTIES }}" > android/local.properties
+          cat android/local.properties
+      - name: Prepare release keystore
+        run: |
+          echo "${{ secrets.CREDZY_KEYSTORE }}" > Credzy.asc
+          gpg -d --passphrase "${{ secrets.CREDZY_KEYSTORE_PASSPHARSE }}" --batch Credzy.asc > android/app/Credzy
+      - name: Create file
+        run: |
+          echo ${{ secrets.BUILD_GOOGLE_SERVICES }} | base64 -d > android/google-services.json
+          echo ${{ secrets.BUILD_GOOGLE_SERVICES }} | base64 -d > android/app/google-services.json
+          cat android/google-services.json
+          cat android/app/google-services.json
+          echo "File created with secret value."
+          
+      - name: Install node_modules
+        run: |
+          yarn install
+
+      # - name: Download Android Emulator Image
+      #   run: |
+      #     echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install $PACKAGE
+      #     echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name pixel_4 --device "pixel_4" --package $PACKAGE --sdcard 256M
+      #     # adb start-server
+      #     $ANDROID_HOME/emulator/emulator -list-avds
+      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list device
+      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
+      #   env:
+      #     PACKAGE: "system-images;android-30;default;x86_64"
+
+      # - name: Change Android Emulator settings
+      #   run: |
+      #     echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+      #     mkdir -p /root/.android && touch /root/.android/repositories.cfg
+      #     echo "vm.heapSize=576" >> $AVD_PATH/config.ini
+      #     echo "hw.ramSize=2048" >> $AVD_PATH/config.ini
+      #     echo "disk.dataPartition.size=2048m" >> $AVD_PATH/config.ini
+      #     grep "size" $AVD_PATH/config.ini
+      #   env:
+      #     AVD_NAME: pixel_4
+      #     AVD_PATH: /Users/runner/.android/avd/pixel_4.avd
+
+      # - name: Android Emulator
+      #   timeout-minutes: 10
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Starting emulator"
+      #     nohup $ANDROID_HOME/emulator/emulator -avd emu -no-audio -no-snapshot -no-window &
+      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+      #     $ANDROID_HOME/platform-tools/adb devices
+      #     echo "Emulator started"
+     
+
+
+      - name: Build for detox
+        run: |
+          yarn detox_build_release
+
+      # - name: Android Detox
+      #   run: yarn run start && yarn run cucumber_release
+
+      # - name: Store Detox artifacts on test failure
+      #   uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: detox-artifacts
+      #     path: artifacts # Default path for Detox artifacts

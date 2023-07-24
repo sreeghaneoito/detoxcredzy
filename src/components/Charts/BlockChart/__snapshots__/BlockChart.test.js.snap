@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "height": 30,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.5,
+          "height": 30,
+          "width": "20%",
+        },
+        Object {
+          "backgroundColor": "#F8F8FA",
+          "borderColor": "#FFF",
+        },
+        Object {
+          "borderBottomLeftRadius": 8,
+          "borderTopLeftRadius": 8,
+        },
+        false,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.5,
+          "height": 30,
+          "width": "20%",
+        },
+        Object {
+          "backgroundColor": "#F8F8FA",
+          "borderColor": "#FFF",
+        },
+        false,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.5,
+          "height": 30,
+          "width": "20%",
+        },
+        Object {
+          "backgroundColor": "#F8F8FA",
+          "borderColor": "#FFF",
+        },
+        false,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.5,
+          "height": 30,
+          "width": "20%",
+        },
+        Object {
+          "backgroundColor": "#F8F8FA",
+          "borderColor": "#FFF",
+        },
+        false,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.5,
+          "height": 30,
+          "width": "20%",
+        },
+        Object {
+          "backgroundColor": "#F8F8FA",
+          "borderColor": "#FFF",
+        },
+        Object {
+          "borderBottomRightRadius": 8,
+          "borderTopRightRadius": 8,
+        },
+        false,
+      ]
+    }
+  />
+</View>
+`;
