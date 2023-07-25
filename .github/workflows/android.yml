@@ -40,32 +40,32 @@ jobs:
           cat android/app/google-services.json
           echo "File created with secret value."
           
-#       - name: Install node_modules
-#         run: |
-#           yarn install
+      - name: Install node_modules
+        run: |
+          yarn install
 
-      # - name: Download Android Emulator Image
-      #   run: |
-      #     echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install $PACKAGE
-      #     echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name pixel_4 --device "pixel_4" --package $PACKAGE --sdcard 256M
-      #     # adb start-server
-      #     $ANDROID_HOME/emulator/emulator -list-avds
-      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list device
-      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
-      #   env:
-      #     PACKAGE: "system-images;android-30;default;x86_64"
+      - name: Download Android Emulator Image
+        run: |
+          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install $PACKAGE
+          echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name pixel_4 --device "pixel_4" --package $PACKAGE --sdcard 256M
+          # adb start-server
+          $ANDROID_HOME/emulator/emulator -list-avds
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list device
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
+        env:
+          PACKAGE: "system-images;android-30;default;x86_64"
 
-      # - name: Change Android Emulator settings
-      #   run: |
-      #     echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
-      #     mkdir -p /root/.android && touch /root/.android/repositories.cfg
-      #     echo "vm.heapSize=576" >> $AVD_PATH/config.ini
-      #     echo "hw.ramSize=2048" >> $AVD_PATH/config.ini
-      #     echo "disk.dataPartition.size=2048m" >> $AVD_PATH/config.ini
-      #     grep "size" $AVD_PATH/config.ini
-      #   env:
-      #     AVD_NAME: pixel_4
-      #     AVD_PATH: /Users/runner/.android/avd/pixel_4.avd
+      - name: Change Android Emulator settings
+        run: |
+          echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+          mkdir -p /root/.android && touch /root/.android/repositories.cfg
+          echo "vm.heapSize=576" >> $AVD_PATH/config.ini
+          echo "hw.ramSize=2048" >> $AVD_PATH/config.ini
+          echo "disk.dataPartition.size=2048m" >> $AVD_PATH/config.ini
+          grep "size" $AVD_PATH/config.ini
+        env:
+          AVD_NAME: pixel_4
+          AVD_PATH: /Users/runner/.android/avd/pixel_4.avd
 
       # - name: Android Emulator
       #   timeout-minutes: 10
@@ -79,16 +79,16 @@ jobs:
      
 
 
-#       - name: Build for detox
-#         run: |
-#           yarn detox_build_release
+      - name: Build for detox
+        run: |
+          yarn detox_build_release
 
-      # - name: Android Detox
-      #   run: yarn run start && yarn run cucumber_release
+      - name: Android Detox
+        run: yarn run start && yarn run cucumber_release
 
-      # - name: Store Detox artifacts on test failure
-      #   uses: actions/upload-artifact@v3
-      #   if: failure()
-      #   with:
-      #     name: detox-artifacts
-      #     path: artifacts # Default path for Detox artifacts
+      - name: Store Detox artifacts on test failure
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: detox-artifacts
+          path: artifacts # Default path for Detox artifacts
