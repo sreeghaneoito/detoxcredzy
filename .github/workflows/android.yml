@@ -34,7 +34,10 @@ jobs:
           gpg -d --passphrase "${{ secrets.CREDZY_KEYSTORE_PASSPHARSE }}" --batch Credzy.asc > android/app/Credzy
       - name: Create file
         run: |
-          cat ${{ secrets.BUILD_GOOGLE_SERVICES }}
+          echo "ygugugu" > android/sample.txt
+          echo "dsfdsf" > android/app/sample.txt
+          cat android/sample.txt
+          cat android/app/sample.txt
           echo ${{ secrets.BUILD_GOOGLE_SERVICES }} | base64 -d > android/google-services.json
           echo ${{ secrets.BUILD_GOOGLE_SERVICES }} | base64 -d > android/app/google-services.json
           cat android/google-services.json
