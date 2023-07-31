@@ -14,10 +14,10 @@ jobs:
           fetch-depth: 1
       - name: Unzip file
         run: |
-          chmod 700 android
+          chmod 777 android
           cd android
           ls -a
-          chmod 700 app
+          chmod 777 app
           cd app  
           ls -a
           mkdir -m777 build
