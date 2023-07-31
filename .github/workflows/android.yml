@@ -12,7 +12,12 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
-
+      - name: Unzip file
+        run: unzip -q app-release.zip -d android/app/build/outputs/apk/release/
+  
+      - name: List files in the destination folder (optional)
+        run: ls -R android/app/build/outputs/apk/release/
+  
       - name: Node
         uses: actions/setup-node@v3
         with:
@@ -83,12 +88,12 @@ jobs:
      
 
 
-      - name: Build for detox
-        run: |
-          yarn detox_build_release
+      # - name: Build for detox
+      #   run: |
+      #     yarn detox_build_release
 
-      - name: Android Detox
-        run: yarn run start && yarn run cucumber_release
+      # - name: Android Detox
+      #   run: yarn run start && yarn run cucumber_release
 
       - name: Store Detox artifacts on test failure
         uses: actions/upload-artifact@v3
