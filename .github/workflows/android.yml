@@ -16,8 +16,18 @@ jobs:
         run: |
           chmod 700 android
           cd android
+          ls -a
           chmod 700 app
-          mkdir -m777 -v android/app/build/outputs/apk/release/
+          cd app  
+          ls -a
+          mkdir -m777 build
+          cd build
+          mkdir -m777 outputs
+          cd outputs
+          mkdir  -m777 apk
+          cd apk
+          mkdir -m777 release
+          ls-a
           unzip -q app-release.zip -d android/app/build/outputs/apk/release/
   
       - name: List files in the destination folder (optional)
