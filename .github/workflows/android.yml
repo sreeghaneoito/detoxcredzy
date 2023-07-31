@@ -28,7 +28,7 @@ jobs:
           cd apk
           mkdir -m777 release
           ls -a
-          cd
+          cd ../../../../../../
           ls -a
           mv app-release.apk android/app/build/outputs/apk/release/
   
