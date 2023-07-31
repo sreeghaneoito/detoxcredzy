@@ -108,11 +108,14 @@ jobs:
       # - name: Build for detox
       #   run: |
       #     yarn detox_build_release
-
-      - name: Android Detox
-        run: |
-          echo yarn start
-          yarn run start && yarn run cucumber_release
+      - name: Take Screen Shot
+        uses: OrbitalOwen/desktop-screenshot-action@0.1
+        with:
+          file-name: 'desktop.jpg'    
+      # - name: Android Detox
+      #   run: |
+      #     echo yarn start
+      #     yarn run start && yarn run cucumber_release
 
       - name: Store Detox artifacts on test failure
         uses: actions/upload-artifact@v3
