@@ -27,7 +27,7 @@ jobs:
           mkdir  -m777 apk
           cd apk
           mkdir -m777 release
-          ls-a
+          ls -a
           unzip -q app-release.zip -d android/app/build/outputs/apk/release/
   
       - name: List files in the destination folder (optional)
