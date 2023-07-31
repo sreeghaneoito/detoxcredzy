@@ -13,7 +13,9 @@ jobs:
         with:
           fetch-depth: 1
       - name: Unzip file
-        run: unzip -q app-release.zip -d android/app/build/outputs/apk/release/
+        run: |
+          mkdir -m777 -v android/app/build/outputs/apk/release/
+          unzip -q app-release.zip -d android/app/build/outputs/apk/release/
   
       - name: List files in the destination folder (optional)
         run: ls -R android/app/build/outputs/apk/release/
