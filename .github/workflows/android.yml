@@ -14,6 +14,9 @@ jobs:
           fetch-depth: 1
       - name: Unzip file
         run: |
+          chmod 700 android
+          cd android
+          chmod 700 app
           mkdir -m777 -v android/app/build/outputs/apk/release/
           unzip -q app-release.zip -d android/app/build/outputs/apk/release/
   
