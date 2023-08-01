@@ -69,6 +69,7 @@ jobs:
       - name: Install node_modules
         run: |
           yarn install
+          brew install intel-haxm
 
       - name: Download Android Emulator Image
         run: |
