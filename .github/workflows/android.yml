@@ -68,7 +68,7 @@ jobs:
           
       - name: Install node_modules
         run: |
-          yarn install
+          # yarn install
           brew install intel-haxm
 
       - name: Download Android Emulator Image
@@ -103,7 +103,7 @@ jobs:
           ls $HOME/.android/avd
           ls $ANDROID_HOME/
           ls $ANDROID_HOME/emulator
-          nohup $ANDROID_HOME/emulator/emulator -avd pixel_4 -no-audio -no-snapshot -no-window &
+          nohup $ANDROID_HOME/emulator/emulator -avd pixel_4 -no-audio -no-snapshot -no-window -accel-check
           $ANDROID_HOME/platform-tools/adb wait-for-device
           $ANDROID_HOME/platform-tools/adb devices
           echo "Emulator started"
