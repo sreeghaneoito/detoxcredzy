@@ -27,11 +27,14 @@ jobs:
           mkdir  -m777 apk
           cd apk
           mkdir -m777 release
+          mkdir -m777 androidTest
+          cd androidTest release
+          mkdir -m777 
           ls -a
-          cd ../../../../../
+          cd ../../../../../../
           ls -a
           mv app-release.apk android/app/build/outputs/apk/release/
-          mkdir -m777 -P android/app/build/outputs/apk/androidTest/release/
+          # mkdir -m777 -P android/app/build/outputs/apk/androidTest/release/
           mv app-release.apk android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk
   
       - name: List files in the destination folder (optional)
