@@ -39,7 +39,7 @@ jobs:
           ls -a
           echo "checking again"
           ls -a android/app/build/outputs/apk/androidTest/release
-          cp app-release.apk android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk
+          cp app-release-androidTest.apk android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk
   
       - name: List files in the destination folder (optional)
         run: ls -R android/app/build/outputs/apk/release/
