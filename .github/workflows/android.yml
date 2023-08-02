@@ -71,39 +71,38 @@ jobs:
           # yarn install
           # brew install intel-haxm
 
-      - name: Download Android Emulator Image
-        run: |
-          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install $PACKAGE
-          echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name pixel_4 --device "pixel_4" --package $PACKAGE --sdcard 256M
-          # adb start-server
-          $ANDROID_HOME/emulator/emulator -list-avds
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list device
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
-        env:
-          PACKAGE: "system-images;android-30;default;x86_64"
+      # - name: Download Android Emulator Image
+      #   run: |
+      #     echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install $PACKAGE
+      #     echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name pixel_4 --device "pixel_4" --package $PACKAGE --sdcard 256M
+      #     # adb start-server
+      #     $ANDROID_HOME/emulator/emulator -list-avds
+      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list device
+      #     $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
+      #   env:
+      #     PACKAGE: "system-images;android-30;default;x86_64"
 
-      - name: Change Android Emulator settings
-        run: |
-          echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
-          mkdir -p /root/.android && touch /root/.android/repositories.cfg
-          echo "vm.heapSize=576" >> $AVD_PATH/config.ini
-          echo "hw.ramSize=2048" >> $AVD_PATH/config.ini
-          echo "disk.dataPartition.size=2048m" >> $AVD_PATH/config.ini
-          grep "size" $AVD_PATH/config.ini
-        env:
-          AVD_NAME: pixel_4
-          AVD_PATH: /Users/runner/.android/avd/pixel_4.avd
+      # - name: Change Android Emulator settings
+      #   run: |
+      #     echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+      #     mkdir -p /root/.android && touch /root/.android/repositories.cfg
+      #     echo "vm.heapSize=576" >> $AVD_PATH/config.ini
+      #     echo "hw.ramSize=2048" >> $AVD_PATH/config.ini
+      #     echo "disk.dataPartition.size=2048m" >> $AVD_PATH/config.ini
+      #     grep "size" $AVD_PATH/config.ini
+      #   env:
+      #     AVD_NAME: pixel_4
+      #     AVD_PATH: /Users/runner/.android/avd/pixel_4.avd
 
       - name: Run Detox Test(s)
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 29
           target: default
           arch: x86_64
           profile: pixel
-          avd-name: pixel_4
+          avd-name: Pixel_API_29_AOSP
           script: bash ${{ github.workspace }}/scripts/run-e2e-android-release.sh
-
       # - name: Android Emulator
       #   timeout-minutes: 5
       #   continue-on-error: true
