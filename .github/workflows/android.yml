@@ -33,7 +33,7 @@ jobs:
           ls -a
           cd ../../../../../../
           ls -a
-          cp app-release-androidTest.apk android/app/build/outputs/apk/release/
+          cp app-release-androidTest.apk android/app/build/outputs/apk/release/app-release.apk
           # mkdir -m777 -P android/app/build/outputs/apk/androidTest/release/
           echo "Checking directory"
           ls -a
