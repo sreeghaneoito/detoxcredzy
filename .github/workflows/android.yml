@@ -28,8 +28,8 @@ jobs:
           cd apk
           mkdir -m777 release
           mkdir -m777 androidTest
-          cd androidTest release
-          mkdir -m777 
+          cd androidTest 
+          mkdir -m777 release
           ls -a
           cd ../../../../../../
           ls -a
