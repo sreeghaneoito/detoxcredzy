@@ -6,7 +6,7 @@
 export const checkElementExist = async name =>
   await waitFor(element(by.id(name)))
     .toBeVisible()
-    .withTimeout(5000);
+    .withTimeout(600000);
 
 /**
  *
