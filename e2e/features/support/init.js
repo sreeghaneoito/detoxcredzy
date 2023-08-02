@@ -11,7 +11,7 @@ const sourceFolder = '/tmp';
 
 BeforeAll(async () => {
   console.log('BeforeAll');
-  await detox.init(config);
+  await detox.init({...config, behavior: {cleanup: {shutdownDevice: true}}});
   await detox.device.launchApp({
     newInstance: true,
   });
@@ -58,6 +58,7 @@ After(async context => {
 });
 
 AfterAll(async () => {
-  // await detox.cleanup();
-  await detox.device.terminateApp();
+  console.log('After ALl');
+  await detox.cleanup();
+  // await detox.device.terminateApp();
 });
