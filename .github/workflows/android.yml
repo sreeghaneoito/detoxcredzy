@@ -23,25 +23,19 @@ jobs:
           mkdir -m777 build
           cd build
           mkdir -m777 outputs
-          cd outputs
-          mkdir  -m777 apk
-          cd apk
-          mkdir -m777 release
-          mkdir -m777 androidTest
-          cd androidTest 
-          mkdir -m777 release
           ls -a
-          cd ../../../../../../
+          cd ../../../
           ls -a
-          cp app-release-androidTest.apk android/app/build/outputs/apk/release/app-release.apk
+          cp -r apk android/app/build/outputs/
           # mkdir -m777 -P android/app/build/outputs/apk/androidTest/release/
-          echo "Checking directory"
-          ls -a
-          echo "checking again"
+          # echo "Checking directory"
+          # ls -a
+          # echo "checking again"
+          # ls -a android/app/build/outputs/apk/androidTest/release
+          # cp app-release-androidTest.apk android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk
+          # echo "checking for build"
           ls -a android/app/build/outputs/apk/androidTest/release
-          cp app-release-androidTest.apk android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk
-          echo "checking for build"
-          ls -a android/app/build/outputs/apk/androidTest/release
+          ls -a android/app/build/outputs/apk/release
   
       - name: List files in the destination folder (optional)
         run: ls -R android/app/build/outputs/apk/release/
