@@ -17,6 +17,7 @@
     "codepush:android": "appcenter codepush release-react -a Credzy/Credzy-1 -d Production",
     "detox_build_release": "detox build --configuration android.emu.release",
     "detox_build_debug": "detox build --configuration android.emu.debug",
+    "e2e:test": "detox test --configuration",
     "codepush:ios": "appcenter codepush release-react -a Credzy/Credzy -d Production",
     "cucumber_debug": "node_modules/.bin/cucumber-js ./e2e/features --require-module @babel/register -f json:./e2e/features/report/json/cucumber_report.json --configuration android.emu.debug",
     "cucumber_release": " npm run remove-reports &&  node_modules/cucumber/bin/cucumber-js ./e2e/features --require-module @babel/register -f json:./e2e/features/report/json/cucumber_report.json --configuration android.emu.release && npm run generate-reports",
